@@ -126,7 +126,11 @@ img{ display:block;}
 .nav-list{
 	width:15.1rem;
 	margin:0.45rem auto 0;}
-.nav-list-box li{ float:left;}
+	
+.nav-list-box{ display:-webkit-box;}
+	
+.nav-list-box li{-webkit-box-flex:1}
+
 .list-box{ width:1.65rem;
 	height:1.65rem;
 	background:#ca0b1a;
@@ -231,12 +235,12 @@ img{ display:block;}
 	-webkit-box-flex:1;
 	height:1.75rem;
 	position:relative;
+	margin-top:0.5rem;
 }
 .nav-e li img{ 
 	width:1rem;
 	height:1rem;
 	background-size:100%;
-	margin-top:0.5rem;
 	text-align:center;
 	}
 .nav-e li div{ 
@@ -248,7 +252,7 @@ img{ display:block;}
 	width:2.9rem;
 	height:2.325rem;
 	position:absolute;
-	top:-0.1rem;
+	top:-0.6rem;
 	left:-0.6rem;
 	background:url(img/p-l1.png) no-repeat;
 	background-size:100%;
@@ -377,7 +381,8 @@ document.addEventListener('DOMContentLoaded',option,false);
 			<div class="list-box">face</div>
 			<p class="list-p">彩妆护理</p>
 		</li>
-		
+	</ul>
+	<ul class="nav-list-box clearfix">	
 		<li class="clearfix  box-top">
 			<div class="list-box">face</div>
 			<p class="list-p">头发护理</p>

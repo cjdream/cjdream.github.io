@@ -126,10 +126,10 @@ img{ display:block;}
 .nav-list{
 	width:15.1rem;
 	margin:0.45rem auto 0;}
-
+.nav-list-box{ display:-webkit-box;}
 .nav-list-box li{ 
-	float:left;
-	width:5.08rem;
+	-webkit-box-flex:1;
+	
 }
 .list-box{ width:1.65rem;
 	height:1.65rem;
@@ -381,7 +381,8 @@ document.addEventListener('DOMContentLoaded',option,false);
 			<div class="list-box">face</div>
 			<p class="list-p">彩妆护理</p>
 		</li>
-		
+	</ul>
+	<ul class="nav-list-box clearfix">	
 		<li class="clearfix  box-top">
 			<div class="list-box">face</div>
 			<p class="list-p">头发护理</p>

@@ -54,12 +54,15 @@ img{ display:block;}
 	margin-left:0.725rem;
 	margin-top:0.3rem;
 }
-.bg{ position:relative;}
+.bg{ position:relative;
+	width:16rem;
+	overflow: hidden;
+	}
 .bg img{
 	width:16rem;
 	height:6.25rem;
 	background-size:100%;
-	display:none;}
+	float:left;}
 .bg .show{
 	display:block;}
 .btn{
@@ -260,46 +263,114 @@ img{ display:block;}
 	background-size:100%;
 }
 
+
+.box-d{
+	width:96rem;
+	height:100%;
+	overflow: hidden;
+	-webkit-transform:translate3d(-16rem,0,0);
+}
 </style>
 <script>
 function change(){
 	document.documentElement.style.fontSize=document.documentElement.clientWidth/16+'px';
 }
-function option(){
-	var oBox=document.querySelector('#bg');
-	var oImg=oBox.querySelectorAll('img');
+ document.addEventListener('DOMContentLoaded',function(){
+	var oUl=document.querySelector('#bg .box-d');
+	
 	var oBtn=document.querySelector('#btn');
 	var aBtn=oBtn.querySelectorAll('li');
 	
-	var n=0;
-	var timer=setInterval(time,1000);
-	
-	function time()
-	{
-		n++;
-		if( n==aBtn.length )
-		{
-			n=0;
-		}
+
+	var aLi=oUl.children;
+
+	var iNow=1; //现在是第几张
+	var x=-iNow*aLi[0].offsetWidth;
+
+
+	var bReady=true;
+	oUl.addEventListener('touchstart',function(ev){
+		if(bReady==false)return;
+		bReady=false;
+
+		oUl.style.WebkitTransition='none';
+		var downX=ev.targetTouches[0].pageX;
+		var disX=downX-x;
+
+		function fnMove(ev){
+			x=ev.targetTouches[0].pageX-disX;
+
+			oUl.style.WebkitTransform='translate3d('+x+'px,0px,0px)';
 		
-		tob();	
-	}
-		
-	function tob()
-	{
-		for(var i=0;i<aBtn.length;i++)
-		{
-			oImg[i].className='';
-			aBtn[i].className='';
 		}
-			oImg[n].className='show';
-			aBtn[n].className='active';
-	}
+		function fnEnd(ev){
+			document.removeEventListener('touchmove',fnMove,false);
+			document.removeEventListener('touchend',fnEnd,false);
+
+			//代码
+			var upX=ev.changedTouches[0].pageX;
+
+			oUl.style.WebkitTransition='.5s all ease';
+
+			if(Math.abs(upX-downX)>50){
+				//切换
+				if(upX<downX){ //左 ++
+					iNow++;
+
+					if(iNow==aLi.length)iNow=aLi.length-1;
+				}else{ //右 --
+					iNow--;
+					if(iNow==-1)iNow=0;
+				}
+
+			}
+			x=-iNow*aLi[0].offsetWidth;
+			oUl.style.WebkitTransform='translate3d('+x+'px,0px,0px)';
+
+			//运动完了
+			function tEnd(){
+				bReady=true;
+				oUl.removeEventListener('webkitTransitionEnd',tEnd,false);
+
+				if(iNow==aLi.length-1){
+					iNow=1;
+					oUl.style.WebkitTransition='none';
+					x=-iNow*aLi[0].offsetWidth;
+					oUl.style.WebkitTransform='translate3d('+x+'px,0px,0px)';
+				}
+
+				if(iNow==0){
+					iNow=aLi.length-2;
+					oUl.style.WebkitTransition='none';
+					x=-iNow*aLi[0].offsetWidth;
+					oUl.style.WebkitTransform='translate3d('+x+'px,0px,0px)';
+				}
+				
+				for(var i=0;i<aBtn.length;i++)
+				{
+					aBtn[i].className='';
+				}
+					
+				aBtn[iNow-1].className='active';
+			}
+			oUl.addEventListener('webkitTransitionEnd',tEnd,false);
+			
+			
+			
+		}
+
+		document.addEventListener('touchmove',fnMove,false);
+		document.addEventListener('touchend',fnEnd,false);
+
+		ev.preventDefault();
+		
+	},false);
 	
-}
+	
+},false);
 window.addEventListener('load',change,false);
 window.addEventListener('resize',change,false);
-document.addEventListener('DOMContentLoaded',option,false);
+
 </script>
 </head>
 
@@ -311,15 +382,18 @@ document.addEventListener('DOMContentLoaded',option,false);
 	</span>
 </header>
 <div class="bg" id="bg">
-	<img src="img/1.jpg"  class="show"/>
-	<img src="img/1p-111..jpg" />
-	<img src="img/p-44.jpg"/>
-	<img src="img/p-33.jpg" />
-	<img src="img/1.jpg" />
-
+	<div class="box-d">
+		<img src="img/p-33.jpg" />
+		
+		<img src="img/1.jpg"/>
+		<img src="img/p-44.jpg"/>
+		<img src="img/1.jpg" />
+		<img src="img/p-33.jpg" />
+		
+		<img src="img/1.jpg"/>
+	</div>
 	<ul class="btn clearfix" id="btn">
 		<li class="active"></li>
-		<li></li>
 		<li></li>
 		<li></li>
 		<li></li>

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+*{ margin:0; padding:0;}
+body{ background:#313131; font-family:Verdana, Geneva, sans-serif; color:#ddd; font-size:13px;}
+ul,li{ list-style:none;}
+#wrap .text, #btn, #radiobtn span, #radiobtn .radioactive, #checkbox1 span, #checkbox1 .checkactive, .my_sel div, #file .bgdiv, .yulan{background:url(../images/form_img/bg.png) no-repeat scroll;}
+#wrap{ width:370px; margin:30px auto;}
+#wrap li{ clear:both; padding:5px 0;}
+.textbox{ padding-bottom:5px; height:45px;}
+#wrap li strong{font-weight:normal; padding-right:10px;}
+#wrap .text{ width:300px; height:15px; background-position:0 5px; color:#ddd; padding:15px 5px; border:0;}
+#wrap .text:focus{ outline:none;}
+#btn{ width:160px; height:47px; background-position:0 -120px; border:0 none; color:#fff; font-size:14px; font-weight:bold; margin:15px 0 0 48px; cursor:pointer;}
+#radiobtn{ padding-left:38px; padding-bottom:10px;}
+#radiobtn span{ padding:2px 20px; line-height:20px; background-position:-311px 2px; cursor:pointer;}
+#radiobtn .radioactive{ background-position:-311px -17px;}
+#checkbox1{ padding-bottom:10px;}
+#checkbox1 strong{ line-height:45px;}
+#checkbox1 span{ background-position:-311px -40px;padding:2px 20px; line-height:20px; cursor:pointer;}
+#checkbox1 .checkactive{background-position:-311px -62px;}
+#sel strong{ float:left;}
+.my_sel{ float:left; position:relative;}
+.my_sel div{ width:102px; height:33px; background-position:-1px -86px; line-height:33px; padding-left:10px; cursor:default;}
+.my_sel ul{ position:absolute; width:200px; z-index:20; background:#2a2a2a; display:none; border:1px solid #151515; padding-bottom:10px;}
+#wrap .my_sel ul li{ padding-left:10px;cursor:default; width:80px; margin:10px 5px 0 5px; float:left; clear:none; display:inline;}
+#textarea strong{ float:left;}
+.textarea{ float:left; background:#2a2a2a; border-top:1px solid #151515;border-bottom:1px solid #505050; width:300px; min-height:80px; max-height:250px;_height:80px; padding:3px; outline:0;  font-size:12px; word-wrap:break-word;overflow-x:hidden;overflow-y:auto; }
+#file strong{line-height:25px;}
+#file .bgdiv{ background-position:0 -171px; width:216px; height:28px; line-height:28px; position:absolute; top:0; left:50px;}
+#file .lujing{ float:left; width:140px; padding-left:5px; height:28px; overflow:hidden;}
+#file span{ float:left; margin-left:25px;}
+#file .file1{ position:absolute; left:50px; top:3px;  z-index:10;filter:alpha(opacity:0); opacity:0;}
+.yulan{position:absolute; left:270px; line-height:29px; text-align:center; cursor:pointer; top:0; width:63px; height:29px; background-position:-152px -171px;}
+.textFocus{ background:url(../images/form_img/bg.png) no-repeat 0 -40px;}
+
+.textPrompt{ position:absolute; left:5px; top:0; color:#666666; height:45px; line-height:45px;}

@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Licaijuan" />
+<title>表单控件</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" type="text/css" href="css/form_style.css">
+<script type="text/javascript" src="js/for_form.js"></script>
+<script>
+window.onload=function() {
+	oInput('user'); //用户名
+	oInput('pass'); //密码
+    	oInput('email'); 
+	oRadio('radiobtn'); //性别
+	oSel('sel'); //国家
+	oCheck('checkbox1'); //多选
+	oFile('file');//附件
+	oTextarea('textarea');//文本框
+};
+</script>
+</head>
+
+<body>
+<div id="wrap">
+    <form action="http://www.baidu.com">
+        <ul>
+            <li class="textbox"><!--用户名-->
+                <strong style="line-height:45px;">账号：</strong>
+                <label for="user" style="position:relative; height:45px; display:inline-block">
+                    <input placeholder="请输入用户名！" id="user" class="text" name="user" type="text" pro="请输入请户名" required />
+                </label>
+            </li><!--用户名-end-->
+            
+            <li class="textbox"><!--密码-->
+                <strong style="line-height:45px;">密码：</strong>
+                <label for="pass" style="position:relative;height:45px; display:inline-block">
+                	<input placeholder="请输入密码！" name="pass" id="pass" class="text" type="password" pro="请输入密码" required />
+                </label>
+            </li><!--密码-->
+
+            <li class="textbox"><!--Email-->
+                <strong style="line-height:45px;">Email:</strong>
+                <label for="email" style="position:relative;height:45px; display:inline-block">
+                    <input name="email" id="email" class="text" type="email" pro="请输入Email" required />
+                </label>
+            </li><!--Email-end-->
+            
+            <li id="radiobtn"><!--性别-->
+                <strong style="line-height:45px;">性别：</strong>
+                <label>男</label>
+                <input name="sex" checked="checked" type="radio" value="男" /> 
+                <label>女</label>
+                <input type="radio" name="sex" value="女" />
+            </li><!--性别-end-->
+                
+            <li id="sel"><!--国家-->
+            	<strong>国家：</strong>
+                <!--<div class="my_sel">
+                	<div></div>
+                    <ul>
+                    	<li>中国</li>
+                    </ul>
+                </div>-->
+                <select name="country">
+                      <option value="中国">中国</option>
+                      <option value="美国">美国</option>
+                      <option value="加拿大">加拿大</option>
+                      <option value="俄罗斯">俄罗斯</option>
+                      <option value="法国">法国</option>
+                      <option value="德国">德国</option>
+                      <option value="澳大利亚">澳大利亚</option>
+                      <option value="日本">日本</option>
+                </select>
+                
+            </li><!--国家-end-->
+            
+            <li id="checkbox1"><!--地区-->
+            	<strong>地区：</strong>
+                <label>北京</label>
+                  <input name="area" type="checkbox" id="CheckboxGroup1_0" value="北京" />
+                <label>上海</label>
+                  <input type="checkbox" name="area" value="上海" id="CheckboxGroup1_1" />
+                <label>武汉</label>
+                  <input type="checkbox" name="area" value="武汉" id="CheckboxGroup1_2" />
+                <label>南京</label>
+                  <input type="checkbox" name="area" value="南京" id="CheckboxGroup1_3" />
+            </li><!--地区-end-->
+            
+            <li id="file"><!--附件-->
+            	<strong>附件：</strong>
+            	<input name="path" type="file" />
+            </li><!--附件end-->
+                  
+            <li id="textarea"><!--详情-->
+            	<strong>详情：</strong>
+            	<textarea name="detail" value="" cols="" rows=""></textarea>
+            </li><!--详情-dnd-->
+            
+        </ul>
+        <input id="btn" value="提交" type="submit" />
+    </form>
+</div>
+</body>
+</html>

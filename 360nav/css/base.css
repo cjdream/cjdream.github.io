@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+/*reset*/
+body, p,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dt,dd,li,form,input{margin:0; padding:0; border:0;}
+ul,ol,li{list-style:none}
+a{text-decoration:none; cursor:pointer}
+img{vertical-align:middle; border:none}
+
+/*common*/
+body{font: 14px/1.5 Verdana, Geneva, "宋体"}
+.fl{float:left}
+.fr{float:right}
+.mc{margin:0 auto}
+.pr{position:relative}
+.pa{position:absolute}
+.clear{clear:both}
+.clearfix:after{ content:""; clear:both; display:block; visibility:hidden; height:0}
+.clearfix{zoom:1}
+.tc{text-align:center}
+.tr{text-align:right}
+.tl{text-align:left}
+.hide{display:none;}
+.bottomBg_line{width:100%; border-bottom:1px solid #DDDDDD;}

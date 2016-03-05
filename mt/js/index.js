@@ -220,7 +220,7 @@ meituan.index.computeTime=function(){
 		var oTarget = new Date();
 		var nowTime = new Date();
 			oTarget.setFullYear(2016);
-			oTarget.setMonth(1);
+			oTarget.setMonth(3);
 			oTarget.setDate(26);
 			oTarget.setHours(0,0,0);
 			var total=oTarget.getTime()-nowTime.getTime();

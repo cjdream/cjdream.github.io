@@ -385,6 +385,35 @@ meituan.index.Seamless=function(){
 	var left=0;
 	var timer=null;
 	var n=0;
+	
+	timer=setInterval(function(){
+		n--;
+		if(n<0)
+		{
+			oSeamless.style.left=-2344+'px';
+			n=1;
+		}
+		move(oSeamless,{left:-n*w},{duration:1000});
+	},5000);
+	
+	
+	oNextSeamless.onmouseover=oPrevSeamless.onmouseover=oSeamless.onmouseover=function(){
+		clearInterval(timer);
+	};
+	
+	oNextSeamless.onmouseout=oPrevSeamless.onmouseout=oSeamless.onmouseout=function(){
+			timer=setInterval(function(){
+				n--;
+				if(n<0)
+				{
+					oSeamless.style.left=-2344+'px';
+					n=1;
+				}
+				move(oSeamless,{left:-n*w},{duration:1000});
+			},5000);
+	};	
+	
+	
 	oPrevSeamless.onclick=function(){
 		n++;
 		if(n>=3)
@@ -414,9 +443,8 @@ meituan.index.Seamless=function(){
 		},30);*/
 	
 	};
-	
-	
 	oNextSeamless.onclick=function(){
+		
 		n--;
 		if(n<0)
 		{
@@ -447,6 +475,8 @@ meituan.index.Seamless=function(){
 				oSeamless.style.left=left%w-w+'px';
 			}
 		},30);*/
+		
+		
 		
 	};
 

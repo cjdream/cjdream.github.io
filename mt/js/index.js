@@ -387,14 +387,14 @@ meituan.index.Seamless=function(){
 	var n=0;
 	
 	timer=setInterval(function(){
-		n--;
-		if(n<0)
+		n++;
+		if(n>=3)
 		{
-			oSeamless.style.left=-2344+'px';
+			oSeamless.style.left=0;
 			n=1;
 		}
 		move(oSeamless,{left:-n*w},{duration:1000});
-	},5000);
+	},4000);
 	
 	
 	oNextSeamless.onmouseover=oPrevSeamless.onmouseover=oSeamless.onmouseover=function(){
@@ -410,11 +410,11 @@ meituan.index.Seamless=function(){
 					n=1;
 				}
 				move(oSeamless,{left:-n*w},{duration:1000});
-			},5000);
+			},4000);
 	};	
 	
 	
-	oPrevSeamless.onclick=function(){
+	oNextSeamless.onclick=function(){
 		n++;
 		if(n>=3)
 		{
@@ -443,7 +443,7 @@ meituan.index.Seamless=function(){
 		},30);*/
 	
 	};
-	oNextSeamless.onclick=function(){
+	oPrevSeamless.onclick=function(){
 		
 		n--;
 		if(n<0)

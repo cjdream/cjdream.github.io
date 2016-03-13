@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社—http://www.zhinengshe.com</title>
+    <style>
+
+    </style>
+    <script>
+        if(navigator.geolocation){
+            navigator.geolocation.watchPosition(function(ev){
+                var longitude=ev.coords.longitude;
+                var latitude=ev.coords.latitude;
+
+                alert(longitude+','+latitude);
+            },function(err){
+                alert('获取失败了');
+            },{
+                frequency:1000
+            });
+        }else{
+            alert('不支持地理定位');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+

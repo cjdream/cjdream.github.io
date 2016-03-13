@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>智能社—http://www.zhinengshe.com</title>
+    <meta name="viewport" content="width=320">
     <style>
+        body{
+            text-align: center;
+        }
         #box{
             width:80%;
             height:300px;
@@ -11,43 +15,80 @@
             margin: 0 auto;
         }
     </style>
-	 <script src="http://api.map.baidu.com/api?v=2.0&ak=EAc9690e060a06cfe50a260d491afd15"></script>
-
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=EAc9690e060a06cfe50a260d491afd15"></script>
     <script>
-	 window.onload=function(){
-        if(navigator.geolocation){
-            var timer=navigator.geolocation.watchPosition(function(ev){//实时获取更新位置
-                var longitude=ev.coords.longitude; //经度
-                var latitude=ev.coords.latitude;//纬度
+        document.addEventListener('DOMContentLoaded',function(){
+            
+            //生成地图
+            var map = new BMap.Map("box");
 
-               
-           		 //生成地图
-				var map = new BMap.Map("box");
-	
-				//设置中心点，以及缩放
-				var point = new BMap.Point(longitude, latitude);
-	
-				map.centerAndZoom(point, 15);
-       
-            },function(err){
-                alert('获取失败了');
+            //设置中心点，以及缩放
+            navigator.geolocation.watchPosition(function(ev){
+                var longitude=ev.coords.longitude;
+                var latitude=ev.coords.latitude;
+
+                var point = new BMap.Point(longitude, latitude);
+
+                map.centerAndZoom(point, 15);
+
+                //添加标记物
+                var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300,157));
+                var marker2 = new BMap.Marker(point,{icon:myIcon});  // 创建标注
+                map.addOverlay(marker2);
+            },function(){
+                alert('获取失败');
             },{
                 frequency:1000
             });
 
-            document.onclick=function(){
-                navigator.geolocation.clearWatch(timer);//清除实时监听
-            };
-        }else{
-            alert('不支持地理定位');
-        }
 		
-	 };	
+		 function a2d(n){
+            return n*180/Math.PI;
+        }
+        
+   
+			var oDiv=document.getElementById('box');
+            var s=1;
+
+            oDiv.addEventListener('touchstart',function(ev){
+
+                function getS(ev){
+                    var x1=ev.targetTouches[0].pageX;
+                    var y1=ev.targetTouches[0].pageY;
+
+                    var x2=ev.targetTouches[1].pageX;
+                    var y2=ev.targetTouches[1].pageY;
+
+                    var a=x1-x2;
+                    var b=y1-y2;
+
+                    return Math.sqrt(a*a+b*b);
+                }
+
+
+                if(ev.targetTouches.length==2){
+                    var downS=getS(ev);
+
+                    oDiv.innerHTML=downS;
+                }
+
+                document.addEventListener('touchmove',function(ev){
+                    if(ev.targetTouches.length==2){
+                        s=getS(ev)/downS;
+
+                        oDiv.style.WebkitTransform='scale('+s+')';
+                    }
+                },false);
+
+                ev.preventDefault();
+            },false);
+        },false);
+
+      
     </script>
 </head>
 <body>
-
-<div id="box">
+    <div id="box">
 
     </div>
 </body>
